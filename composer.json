@@ -1,0 +1,26 @@
+{
+    "name": "botomatic/engine",
+    "version": "0.1",
+    "description": "Botomatic PHP framework",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Links der Isar",
+            "email": "kontakt@linksderisar.com"
+        },
+        {
+            "name": "Alexandru Muresan",
+            "email": "contact@alexandrumuresan.com"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "Botomatic\\Engine\\": "src/"
+        }
+    },
+
+    "require": {
+        "php": ">=7.0"
+    }
+}
