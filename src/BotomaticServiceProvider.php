@@ -66,7 +66,7 @@ class BotomaticServiceProvider extends ServiceProvider
                  */
 
                 // cli bot
-//                Facebook\Console\Develop\CliBot::class,
+                Facebook\Console\Develop\CliBot::class,
             ]);
         }
 
