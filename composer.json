@@ -1,7 +1,7 @@
 {
     "name": "botomatic/engine",
-    "version": "0.1",
-    "description": "Botomatic PHP framework",
+    "description": "Botomatic PHP framework engine",
+    "version": "1.0.1",
     "license": "MIT",
     "authors": [
         {
