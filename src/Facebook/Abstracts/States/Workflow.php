@@ -56,8 +56,6 @@ abstract class Workflow extends Base
      * @param \Botomatic\Engine\Core\Entities\Session $session
      *
      * @return \Botomatic\Engine\Facebook\Entities\Response
-     *
-     * @throws \Botomatic\Engine\Platforms\Facebook\Exceptions\State\MessageHandlerMissing
      */
     public function handle(\Botomatic\Engine\Facebook\Entities\Message $message,
                            \Botomatic\Engine\Facebook\Entities\Response $response,

@@ -26,6 +26,21 @@ abstract class Background extends Command
      */
     protected $description = '';
 
+    /**
+     * @var bool
+     */
+    protected $debug = true;
+
+    /**
+     * Background constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->debug = env('BOTOMATIC_FACEBOOK_DEBUG');
+    }
+
 
     /**
      * @param \Botomatic\Engine\Facebook\Entities\Scope $scope
@@ -61,7 +76,7 @@ abstract class Background extends Command
             if ($result instanceof \Botomatic\Engine\Facebook\Entities\Response)
             {
                 // locally we output the responses
-                if (app()->isLocal())
+                if ($this->debug == true)
                 {
                     var_dump($result->getResponses());
                 }
@@ -106,19 +121,19 @@ abstract class Background extends Command
                  *
                  *
                  -----------------------------------------------------------------------------------------------------*/
-                if (!app()->isLocal())
-                {
-                    /**
-                     * Send response to facebook
-                     */
-                     $this->dispatchResponse($response, $scope->getSession());
-                }
-                else
+                if ($this->debug == true)
                 {
                     /**
                      * Return response for output
                      */
                     var_dump($response->getResponses());
+                }
+                else
+                {
+                    /**
+                     * Send response to facebook
+                     */
+                    $this->dispatchResponse($response, $scope->getSession());
                 }
 
                 /*------------------------------------------------------------------------------------------------------

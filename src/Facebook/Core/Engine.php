@@ -80,7 +80,6 @@ class Engine
         $bootstrap = config('botomatic.facebook.bootstrap');
 
         new $bootstrap($session);
-
     }
 
     public function process()

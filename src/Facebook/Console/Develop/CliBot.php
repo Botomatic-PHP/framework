@@ -71,8 +71,6 @@ class CliBot extends Command
     {
         parent::__construct();
 
-        $this->check_environment();
-
         $this->url = env('BOTOMATIC_FACEBOOK_TEST_URL');
     }
 
@@ -83,6 +81,8 @@ class CliBot extends Command
      */
     public function handle()
     {
+        $this->check_environment();
+
         $this->newUser();
 
         try
