@@ -57,6 +57,7 @@ class BotomaticServiceProvider extends ServiceProvider
                  */
                 Facebook\Console\Generators\State::class,
                 Facebook\Console\Generators\Filter::class,
+                Facebook\Console\Generators\BackgroundState::class,
                 Facebook\Console\Generators\Templates\QuickReplies::class,
                 Facebook\Console\Generators\Templates\GenericTemplates::class,
                 Facebook\Console\Generators\Templates\ButtonTemplates::class,

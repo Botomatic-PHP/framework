@@ -3,24 +3,24 @@
 namespace Botomatic\Engine\Facebook\Console\Generators;
 
 /**
- * Class State
+ * Class BackgroundState
  * @package Botomatic\Engine\Facebook\Console\Generators
  */
-class State extends \Botomatic\Engine\Facebook\Console\BotomaticCommands
+class BackgroundState extends \Botomatic\Engine\Facebook\Console\BotomaticCommands
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'bf:state {namespace} {name}';
+    protected $signature = 'bf:background {namespace} {name}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Generate a new state';
+    protected $description = 'Generate a new  background state';
 
     /**
      * @var string
@@ -57,7 +57,7 @@ class State extends \Botomatic\Engine\Facebook\Console\BotomaticCommands
         $state_name = ucfirst($this->argument('name'));
         $state_group = ucfirst($this->argument('namespace'));
 
-        $namespace = $this->namespace  . '\\States\\Workflow\\' . str_replace('/', '\\', $state_group) . '\\' . $state_name ;
+        $namespace = $this->namespace  . '\\States\\Background\\' . str_replace('/', '\\', $state_group);
 
 
         /**
@@ -73,8 +73,7 @@ class State extends \Botomatic\Engine\Facebook\Console\BotomaticCommands
         /**
          * Directories
          */
-        $directory_path_group = $this->location . '/States/Workflow/' . $state_group;
-        $directory_path = $directory_path_group .'/'. $state_name;
+        $directory_path = $this->location . '/States/Background/' . $state_group;
 
 
         /**
@@ -82,47 +81,24 @@ class State extends \Botomatic\Engine\Facebook\Console\BotomaticCommands
          */
         $state_data = [
             'namespace' => $namespace,
-            'message_handler' => $namespace . '\\Handlers\Message',
-            'response_handler' => $namespace . '\\Handlers\Responses',
             'object' => $state_name,
         ];
+
 
         /**
          * State folder
          */
         if (!is_dir($directory_path))
         {
-            mkdir($directory_path,0777, true);
+            mkdir($directory_path, 0777, true);
         }
 
         file_put_contents($directory_path. '/' . $state_name . '.php',
-            view('botomatic::generators.facebook.state.state', $state_data)->render()
+            view('botomatic::generators.facebook.state.background', $state_data)->render()
         );
 
-        /**
-         * Message handler
-         */
-        if (!is_dir($directory_path . '/Handlers'))
-        {
-            mkdir($directory_path . '/Handlers');
-        }
 
-        $state_message_data = [
-            'namespace' => $namespace . '\\Handlers',
-        ];
-
-        file_put_contents($directory_path . '/Handlers/Message.php',
-            view('botomatic::generators.facebook.state.message', $state_message_data)->render()
-        );
-
-        /**
-         * Response handler
-         */
-        file_put_contents($directory_path . '/Handlers/Responses.php',
-            view('botomatic::generators.facebook.state.response', $state_message_data)->render()
-        );
-
-        $this->info('State created successfully, remember to add it Routes/Workflow');
+        $this->info('State created successfully');
 
         $this->comment('\\' . $namespace . '\\' . $state_name . '::class');
     }

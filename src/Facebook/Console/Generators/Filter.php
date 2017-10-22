@@ -4,6 +4,10 @@ namespace Botomatic\Engine\Facebook\Console\Generators;
 
 use Illuminate\Console\Command;
 
+/**
+ * Class Filter
+ * @package Botomatic\Engine\Facebook\Console\Generators
+ */
 class Filter extends \Botomatic\Engine\Facebook\Console\BotomaticCommands
 {
     /**
@@ -84,19 +88,11 @@ class Filter extends \Botomatic\Engine\Facebook\Console\BotomaticCommands
         ];
 
         /**
-         * Group folder
-         */
-        if (!is_dir($directory_path_group))
-        {
-            mkdir($directory_path_group);
-        }
-
-        /**
          * Filter folder
          */
         if (!is_dir($directory_path))
         {
-            mkdir($directory_path);
+            mkdir($directory_path,0777, true);
         }
 
         file_put_contents($directory_path. '/' . $state_name . '.php',

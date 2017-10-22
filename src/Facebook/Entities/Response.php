@@ -193,7 +193,7 @@ class Response
      *
      * @return $this
      */
-    public function addImage($image)
+    public function addImage(string $image)
     {
         $this->responses[] = [
             'data' => $image,

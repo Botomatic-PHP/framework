@@ -159,9 +159,9 @@ class CliBot extends Command
 
         $user->setFacebookId(self::FACEBOOK_ID);
         $user->setFacebookPage(self::FACEBOOK_PAGE_ID);
-        $user->setFirstName('Test');
-        $user->setLastName('Test');
-        $user->setImage('test_image');
+        $user->setFirstName('John');
+        $user->setLastName('Doe');
+        $user->setImage('image.png');
         $user->setLocale(Locales::en_US);
 
         $this->botomaticRepositoryUser()->insert($user);
@@ -378,12 +378,4 @@ class CliBot extends Command
             return $this->resolve_bot_response($this->sendMessage($input));
         }
     }
-
-    /*------------------------------------------------------------------------------------------------------------------
-     *
-     * Helpers
-     *
-     -----------------------------------------------------------------------------------------------------------------*/
-
-
 }

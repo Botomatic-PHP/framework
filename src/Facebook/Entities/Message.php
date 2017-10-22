@@ -95,7 +95,7 @@ class Message
     /**
      * @return string
      */
-    public function getQuickReply(): string
+    public function getQuickReply() : string
     {
         return $this->quick_reply;
     }
@@ -107,7 +107,6 @@ class Message
     {
         $this->quick_reply = $quick_reply;
     }
-
 
     /**
      * @return \Botomatic\Engine\Core\Entities\Location
@@ -176,14 +175,28 @@ class Message
         $this->attachment = $attachment;
     }
 
+    /**
+     * @return Message\Attachment
+     */
     public function getAttachment()
     {
         return $this->attachment;
     }
 
+    /**
+     * @return bool
+     */
     public function hasAttachment() : bool
     {
         return !is_null($this->attachment);
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasQuickReply() : bool
+    {
+        return !is_null($this->quick_reply);
     }
 
     /*------------------------------------------------------------------------------------------------------------------
