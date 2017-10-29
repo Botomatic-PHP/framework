@@ -2,14 +2,14 @@
 
 namespace Botomatic\Engine\Facebook\Console\Develop;
 
+use Botomatic\Engine\Core\Console\BotomaticCommands;
 use Botomatic\Engine\Facebook\Localization\Locales;
-use Illuminate\Console\Command;
 
 /**
  * Class Facebook
  * @package Botomatic\Engine\Commands\Setup
  */
-class CliBot extends Command
+class CliBot extends BotomaticCommands
 {
     const FACEBOOK_ID = 99999999999;
     const FACEBOOK_PAGE_ID = 88888888888;
@@ -26,7 +26,7 @@ class CliBot extends Command
      *
      * @var string
      */
-    protected $signature = 'bf:cli {--raw}';
+    protected $signature = 'botomatic:cli {--raw}';
 
     /**
      * The console command description.
@@ -81,6 +81,8 @@ class CliBot extends Command
      */
     public function handle()
     {
+        $this->print_botomatic();
+
         $this->check_environment();
 
         $this->newUser();
@@ -88,6 +90,18 @@ class CliBot extends Command
         try
         {
             $input = $this->ask('Starting CLI Bot...');
+
+            /**
+             * Is it a postback or a message?
+             */
+            if ($input[0] == '[' AND substr($input, -1) == ']')
+            {
+                return $this->resolve_bot_response(
+                    $this->sendPostback(
+                        str_replace(['[', ']'], '', $input)
+                    )
+                );
+            }
 
             return $this->resolve_bot_response($this->sendMessage($input));
 

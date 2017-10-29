@@ -164,10 +164,23 @@ class Response
      */
     public function addButtonTemplate(\Botomatic\Engine\Facebook\Abstracts\States\Response\Templates\Button $button)
     {
-
         $this->responses[] = [
             'data' => $button,
             'type' => 'button_template',
+        ];
+        return $this;
+    }
+
+    /**
+     * @param \Botomatic\Engine\Facebook\Abstracts\States\Response\Templates\ListTemplate $list
+     *
+     * @return $this
+     */
+    public function addListTemplate(\Botomatic\Engine\Facebook\Abstracts\States\Response\Templates\ListTemplate $list)
+    {
+        $this->responses[] = [
+            'data' => $list,
+            'type' => 'list_template',
         ];
         return $this;
     }

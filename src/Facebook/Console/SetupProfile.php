@@ -2,6 +2,8 @@
 
 namespace Botomatic\Engine\Facebook\Console;
 
+use Botomatic\Engine\Core\Console\BotomaticCommands;
+
 /**
  * Class SetupProfile
  * @package Botomatic\Engine\Facebook\Console
@@ -13,7 +15,7 @@ class SetupProfile extends BotomaticCommands
      *
      * @var string
      */
-    protected $signature = 'bf:setup';
+    protected $signature = 'botomatic:setup';
 
     /**
      * The console command description.
@@ -180,5 +182,4 @@ class SetupProfile extends BotomaticCommands
         $curl->post($this->url . $access_token, $post_data_greeting);
         $this->comment("\n" . $curl->rawResponse);
     }
-
 }

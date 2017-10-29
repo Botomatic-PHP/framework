@@ -6,36 +6,22 @@ namespace {{ $namespace }};
  * Class {{ $object }}
  * @package {{ $namespace }}
  */
-class {{ $object }} extends \Botomatic\Engine\Facebook\Abstracts\States\Response\Templates\Button
+class {{ $object }} extends \Botomatic\Engine\Facebook\Abstracts\States\Response\Templates\ListTemplate
 {
     /**
+     * Options: large, compact
+     *
      * @var string
      */
     public $top_element_style = 'compact';
 
     /**
-     * @var string
+     * @var array
      */
-     public $title = 'Title';
-
-    /**
-     * @var string
-     */
-     public $subtitle = 'Subtitle';
-
-    /**
-     * @var string
-     */
-     public $image_url = 'http://some.url/image';
+    public $elements = [];
 
     /**
      * @var array
      */
-    public $buttons = [
-        [
-            'type' => 'postback',
-            'title' => 'Title',
-            'payload' => 'payload',
-        ]
-    ];
+    public $buttons = [];
 }

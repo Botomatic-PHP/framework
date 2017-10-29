@@ -3,24 +3,24 @@
 namespace Botomatic\Engine\Facebook\Console\Generators\Templates;
 
 /**
- * Class ButtonTemplates
+ * Class ListTemplates
  * @package Botomatic\Engine\Facebook\Console\Generators\Templates
  */
-class ButtonTemplates extends \Botomatic\Engine\Core\Console\BotomaticCommands
+class ListTemplates extends \Botomatic\Engine\Core\Console\BotomaticCommands
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'make:button {namespace} {name}';
+    protected $signature = 'make:list-template {namespace} {name}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Generate a new button template';
+    protected $description = 'Generate a new list template';
 
     /**
      * @var string
@@ -51,7 +51,6 @@ class ButtonTemplates extends \Botomatic\Engine\Core\Console\BotomaticCommands
      */
     public function handle()
     {
-
         $this->print_botomatic();
 
         /**
@@ -60,14 +59,13 @@ class ButtonTemplates extends \Botomatic\Engine\Core\Console\BotomaticCommands
         $template_name = ucfirst($this->argument('name'));
         $template_group = ucfirst($this->argument('namespace'));
 
-        $namespace = $this->namespace  . '\\Templates\\Buttons\\' . str_replace('/', '\\', $template_group);
+        $namespace = $this->namespace  . '\\Templates\\ListTemplates\\' . str_replace('/', '\\', $template_group);
 
         $this->info('\\' . $namespace . '\\' . $template_name . '::class');
 
-        if (!$this->confirm('Create new button template? any existing template will be overwritten', 'yes')) return;
+        if (!$this->confirm('Create new List template? any existing template will be overwritten', 'yes')) return;
 
-
-        $directory_path = $this->location . '/Templates/Buttons/' . $template_group;
+        $directory_path = $this->location . '/Templates/ListTemplates/' . $template_group;
 
         /**
          * Variables needed for the state object
@@ -83,7 +81,7 @@ class ButtonTemplates extends \Botomatic\Engine\Core\Console\BotomaticCommands
         }
 
         file_put_contents($directory_path. '/' . $template_name . '.php',
-            view('botomatic::generators.facebook.state.templates.button', $state_data)->render()
+            view('botomatic::generators.facebook.state.templates.list', $state_data)->render()
         );
 
         $this->info('Template created successfully.');

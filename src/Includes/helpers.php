@@ -1,5 +1,7 @@
 <?php
 
+const BOTOMATIC_VERSION = '1.6';
+
 /**
  * @return \Botomatic\Engine\Facebook\Localization\Localizator
  */

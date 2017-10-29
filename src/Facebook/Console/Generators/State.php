@@ -6,14 +6,14 @@ namespace Botomatic\Engine\Facebook\Console\Generators;
  * Class State
  * @package Botomatic\Engine\Facebook\Console\Generators
  */
-class State extends \Botomatic\Engine\Facebook\Console\BotomaticCommands
+class State extends \Botomatic\Engine\Core\Console\BotomaticCommands
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'bf:state {namespace} {name}';
+    protected $signature = 'make:state {namespace} {name}';
 
     /**
      * The console command description.
@@ -67,7 +67,7 @@ class State extends \Botomatic\Engine\Facebook\Console\BotomaticCommands
 
         $this->comment($namespace);
 
-        if (!$this->confirm('Are you sure? any existing state will be overwritten', 'yes')) return;
+        if (!$this->confirm('Create a new Workflow state? any existing state will be overwritten', 'yes')) return;
 
 
         /**
@@ -123,7 +123,5 @@ class State extends \Botomatic\Engine\Facebook\Console\BotomaticCommands
         );
 
         $this->info('State created successfully, remember to add it Routes/Workflow');
-
-        $this->comment('\\' . $namespace . '\\' . $state_name . '::class');
     }
 }

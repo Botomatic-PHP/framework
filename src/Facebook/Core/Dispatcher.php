@@ -311,6 +311,26 @@ class Dispatcher
                     ]
                 ];
             }
+
+            if ($response_data['type'] == 'list_template')
+            {
+                /** @var \Botomatic\Engine\Facebook\Abstracts\States\Response\Templates\ListTemplate $list */
+                $list = $response_data['data'];
+
+                $responses_entities[] = [
+                    'message' => [
+                        'attachment' => [
+                            'type' => 'template',
+                            'payload' => [
+                                'template_type' => 'list',
+                                'top_element_style' => $list->top_element_style,
+                                'elements' => $list->elements,
+                                'buttons' => $list->buttons,
+                            ]
+                        ],
+                    ]
+                ];
+            }
         }
 
         return $responses_entities;
@@ -335,12 +355,8 @@ class Dispatcher
     {
         if ($curl->httpStatusCode == 400)
         {
-            logger()->error('Facebook webhook error end');
-
             logger()->error((array) $curl->response);
             logger()->error((array) $message);
-
-            logger()->error('Facebook webhook error start:');
         }
     }
 }

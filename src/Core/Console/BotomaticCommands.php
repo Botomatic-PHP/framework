@@ -1,6 +1,6 @@
 <?php
 
-namespace Botomatic\Engine\Facebook\Console;
+namespace Botomatic\Engine\Core\Console;
 
 use Illuminate\Console\Command;
 
@@ -37,7 +37,7 @@ class BotomaticCommands extends Command
          _ __                              
 ( /  )   _/_                _/_o   
  /--< __ /  __ _ _ _   __,  / ,  _,
-/___/(_)(__(_)/ / / /_(_/(_(__(_(__ v1
+/___/(_)(__(_)/ / / /_(_/(_(__(_(__ 
         \n";
 
         $botomatic .= "-------------------------------------\n";

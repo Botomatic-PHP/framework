@@ -2,16 +2,18 @@
 
 namespace Botomatic\Engine\Facebook\Console\Generators\Templates;
 
-use Illuminate\Console\Command;
-
-class GenericTemplates extends \Botomatic\Engine\Facebook\Console\BotomaticCommands
+/**
+ * Class GenericTemplates
+ * @package Botomatic\Engine\Facebook\Console\Generators\Templates
+ */
+class GenericTemplates extends \Botomatic\Engine\Core\Console\BotomaticCommands
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'bf:gt {namespace} {name}';
+    protected $signature = 'make:generic {namespace} {name}';
 
     /**
      * The console command description.
@@ -51,8 +53,6 @@ class GenericTemplates extends \Botomatic\Engine\Facebook\Console\BotomaticComma
     {
         $this->print_botomatic();
 
-        if (!$this->confirm('Are you sure? any template will be overwritten', 'yes')) return;
-
         /**
          * Data from user
          */
@@ -60,6 +60,12 @@ class GenericTemplates extends \Botomatic\Engine\Facebook\Console\BotomaticComma
         $template_group = ucfirst($this->argument('namespace'));
 
         $namespace = $this->namespace  . '\\Templates\\Generic\\' . str_replace('/', '\\', $template_group);
+
+        $this->info('\\' . $namespace . '\\' . $template_name . '::class');
+
+
+        if (!$this->confirm('Create new generic template? any existing template will be overwritten', 'yes')) return;
+
 
         $directory_path = $this->location . '/Templates/Generic/' . $template_group;
 
@@ -73,14 +79,13 @@ class GenericTemplates extends \Botomatic\Engine\Facebook\Console\BotomaticComma
 
         if (!is_dir($directory_path))
         {
-            mkdir($directory_path);
+            mkdir($directory_path, 0777, true);
         }
 
         file_put_contents($directory_path. '/' . $template_name . '.php',
             view('botomatic::generators.facebook.state.templates.generic', $state_data)->render()
         );
 
-        $this->info('\\' . $namespace . '\\' . $template_name . '::class');
-
+        $this->info('Template created successfully.');
     }
 }

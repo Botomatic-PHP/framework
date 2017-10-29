@@ -153,7 +153,7 @@ class Engine
              */
             if (env('BOTOMATIC_FACEBOOK_LOG_REQUESTS', false) == true)
             {
-                \Botomatic\Engine\Core\Debug\Logger::requestFromFacebook(
+                \Botomatic\Engine\Core\Debug\Logger::responseForFacebook(
                     $this->session->getUser(),
                     $this->facebook_dispatcher->composeResponse($this->response)
                 );

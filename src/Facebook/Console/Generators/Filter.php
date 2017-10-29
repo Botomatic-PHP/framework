@@ -8,14 +8,14 @@ use Illuminate\Console\Command;
  * Class Filter
  * @package Botomatic\Engine\Facebook\Console\Generators
  */
-class Filter extends \Botomatic\Engine\Facebook\Console\BotomaticCommands
+class Filter extends \Botomatic\Engine\Core\Console\BotomaticCommands
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'bf:filter {namespace} {name}';
+    protected $signature = 'make:filter {namespace} {name}';
 
     /**
      * The console command description.
@@ -69,7 +69,7 @@ class Filter extends \Botomatic\Engine\Facebook\Console\BotomaticCommands
 
         $this->comment($namespace);
 
-        if (!$this->confirm('Are you sure? any existing state will be overwritten', 'yes')) return;
+        if (!$this->confirm('Create new Filter? any existing filter will be overwritten', 'yes')) return;
 
         /**
          * Directories
@@ -123,7 +123,5 @@ class Filter extends \Botomatic\Engine\Facebook\Console\BotomaticCommands
         );
 
         $this->info('Filter created successfully, remember to add it Routes/Filter or Postbacks');
-
-        $this->info('\\' . $namespace . '\\' . $state_name . '::class');
     }
 }

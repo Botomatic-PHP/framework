@@ -6,14 +6,14 @@ namespace Botomatic\Engine\Facebook\Console\Generators;
  * Class BackgroundState
  * @package Botomatic\Engine\Facebook\Console\Generators
  */
-class BackgroundState extends \Botomatic\Engine\Facebook\Console\BotomaticCommands
+class BackgroundState extends \Botomatic\Engine\Core\Console\BotomaticCommands
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'bf:background {namespace} {name}';
+    protected $signature = 'make:background {namespace} {name}';
 
     /**
      * The console command description.
@@ -67,7 +67,7 @@ class BackgroundState extends \Botomatic\Engine\Facebook\Console\BotomaticComman
 
         $this->comment($namespace);
 
-        if (!$this->confirm('Are you sure? any existing state will be overwritten', 'yes')) return;
+        if (!$this->confirm('Create new background state? any existing state will be overwritten', 'yes')) return;
 
 
         /**
@@ -97,9 +97,6 @@ class BackgroundState extends \Botomatic\Engine\Facebook\Console\BotomaticComman
             view('botomatic::generators.facebook.state.background', $state_data)->render()
         );
 
-
-        $this->info('State created successfully');
-
-        $this->comment('\\' . $namespace . '\\' . $state_name . '::class');
+        $this->info('State created successfully. Remember that this state is a console command.');
     }
 }

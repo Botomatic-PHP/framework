@@ -61,6 +61,7 @@ class BotomaticServiceProvider extends ServiceProvider
                 Facebook\Console\Generators\Templates\QuickReplies::class,
                 Facebook\Console\Generators\Templates\GenericTemplates::class,
                 Facebook\Console\Generators\Templates\ButtonTemplates::class,
+                Facebook\Console\Generators\Templates\ListTemplates::class,
 
                 /**
                  * Facebook commands
