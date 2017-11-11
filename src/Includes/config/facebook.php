@@ -4,7 +4,7 @@ return [
 
     /*------------------------------------------------------------------------------------------------------------------
      *
-     * The bot can be hooked to multiple pages, has a unique ID and access token.
+     * The bot can subscribe to multiple pages, for each you will need page_id => page_access_token
      * It is recommended that you store this in the .env file
      *
      ------------------------------------------------------------------------------------------------------------------*/
