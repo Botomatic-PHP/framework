@@ -3,6 +3,7 @@
 namespace {{ $namespace }};
 
 use \Botomatic\Engine\Facebook\Entities\Response;
+use \Botomatic\Engine\Facebook\Abstracts\States\Workflow\Traits;
 
 /**
  * Class {{ $object }}

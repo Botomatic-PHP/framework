@@ -71,7 +71,7 @@ class CliBot extends BotomaticCommands
     {
         parent::__construct();
 
-        $this->url = env('BOTOMATIC_FACEBOOK_TEST_URL');
+        $this->url = env('APP_URL');
     }
 
     /**
