@@ -71,7 +71,7 @@ class CliBot extends BotomaticCommands
     {
         parent::__construct();
 
-        $this->url = env('APP_URL');
+        $this->url = url('webhook/facebook');
     }
 
     /**
