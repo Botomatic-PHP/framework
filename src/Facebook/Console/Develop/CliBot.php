@@ -91,18 +91,6 @@ class CliBot extends BotomaticCommands
         {
             $input = $this->ask('Starting CLI Bot...');
 
-            /**
-             * Is it a postback or a message?
-             */
-            if ($input[0] == '[' AND substr($input, -1) == ']')
-            {
-                return $this->resolve_bot_response(
-                    $this->sendPostback(
-                        str_replace(['[', ']'], '', $input)
-                    )
-                );
-            }
-
             return $this->resolve_bot_response($this->sendMessage($input));
 
         }
@@ -378,14 +366,16 @@ class CliBot extends BotomaticCommands
              * Check for postbacks
              *
              ---------------------------------------------------------------------------------------------------------*/
-            if (count($response_postbacks) > 0)
-            {
-                if (isset($response_postbacks[$input]))
-                {
-                    return $this->resolve_bot_response (
-                        $this->sendPostback($response_postbacks[$input])
-                    );
 
+            if ($input[0] == '[' AND substr($input, -1) == ']')
+            {
+                $postback = str_replace(['[', ']'], '', $input);
+
+                if (isset($response_postbacks[$postback]))
+                {
+                    return $this->resolve_bot_response(
+                        $this->sendPostback($response_postbacks[$postback])
+                    );
                 }
             }
 

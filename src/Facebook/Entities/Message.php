@@ -77,6 +77,11 @@ class Message
     protected $attachment = null;
 
     /**
+     * @var array
+     */
+    protected $nlp = [];
+
+    /**
      * @return string
      */
     public function getMessage()
@@ -90,6 +95,30 @@ class Message
     public function setMessage($message)
     {
         $this->message = $message;
+    }
+
+    /**
+     * @param array $nlp
+     */
+    public function setNlp(array $nlp)
+    {
+        $this->nlp = $nlp;
+    }
+
+    /**
+     * @return array
+     */
+    public function getNlp() : array
+    {
+        return $this->nlp;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasNlp() : bool
+    {
+        return count($this->nlp) > 0;
     }
 
     /**

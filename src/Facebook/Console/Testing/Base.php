@@ -96,18 +96,6 @@ class Base extends Command
         return $response_processed->getResponse();
     }
 
-    /**
-     * @param string $quick_reply
-     * @param Closure $response
-     *
-     * @return array
-     *
-     * @deprecated
-     */
-    protected function sendPayload(string $quick_reply, Closure $response) : array
-    {
-        return $this->sendQuickReply($quick_reply, $response);
-    }
 
     /**
      * @param string $quick_reply

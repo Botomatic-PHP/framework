@@ -92,6 +92,18 @@ class Request
             }
 
             /**
+             * Optional NLP
+             */
+            if (isset($request_data['entry'][0]['messaging'][0]['message']['nlp']))
+            {
+                if (count($request_data['entry'][0]['messaging'][0]['message']['nlp']['entities']) > 0)
+                {
+                    $this->getMessage()->setNlp($request_data['entry'][0]['messaging'][0]['message']['nlp']);
+                }
+            }
+
+
+            /**
              * Optional Quick Replies
              */
             if (isset($request_data['entry'][0]['messaging'][0]['message']['quick_reply']['payload']))

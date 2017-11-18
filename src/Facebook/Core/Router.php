@@ -52,8 +52,6 @@ class Router
      * @param \Botomatic\Engine\Facebook\Entities\Response $response
      *
      * @return \Botomatic\Engine\Facebook\Abstracts\States\Workflow
-     *
-     * @throws \Botomatic\Engine\Platforms\Facebook\Exceptions\State\InvalidStateRouting
      */
     public function getNextState(\Botomatic\Engine\Facebook\Abstracts\States\Workflow $state, \Botomatic\Engine\Facebook\Entities\Response $response) : \Botomatic\Engine\Facebook\Abstracts\States\Workflow
     {

@@ -92,7 +92,8 @@ class FindOrCreate
             }
             catch (\Exception $exception)
             {
-                logger()->error('Failed to fetch user profile from facebook: ' . $exception->getMessage());
+                logger()->error('Failed to fetch user profile from facebook: ' . $exception->getMessage(). ' Response: ' . json_encode($response, true));
+
             }
 
             /**
