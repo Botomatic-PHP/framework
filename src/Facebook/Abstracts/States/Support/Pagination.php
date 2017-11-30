@@ -80,6 +80,15 @@ abstract class Pagination
      */
     public function getFirst() : array
     {
+        if ($this->results_left > $this->per_page)
+        {
+            $this->results_left = $this->results_left - $this->per_page;
+        }
+        else
+        {
+            $this->results_left = 0;
+        }
+
         return $this->query($this->offset);
     }
 

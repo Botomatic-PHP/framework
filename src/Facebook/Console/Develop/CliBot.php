@@ -340,7 +340,11 @@ class CliBot extends BotomaticCommands
                             foreach ($element->buttons as $button)
                             {
                                 $this->info(' [' . $button->title . '] ');
-                                $response_postbacks[$button->title] = $button->payload;
+
+                                if ($button->type == 'payload')
+                                {
+                                    $response_postbacks[$button->title] = $button->payload;
+                                }
                             }
 
                             $this->info("-----------------------\n");

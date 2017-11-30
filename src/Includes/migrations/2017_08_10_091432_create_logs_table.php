@@ -21,7 +21,7 @@ class CreateLogsTable extends Migration
             $table->integer(Logs::USER_ID)->unsigned();
             $table->tinyInteger(Logs::PLATFORM)->unsigned();
             $table->tinyInteger(Logs::SENT)->unsigned();
-            $table->string(Logs::MESSAGE, 1024);
+            $table->text(Logs::MESSAGE);
 
             $table->dateTime(Logs::CREATED_AT);
 
