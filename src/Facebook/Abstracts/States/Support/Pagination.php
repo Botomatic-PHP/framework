@@ -57,7 +57,7 @@ abstract class Pagination
     /**
      * @return array
      */
-    public function next() : array
+    public function getNext() : array
     {
         $this->offset = $this->offset + $this->per_page;
 
@@ -74,12 +74,16 @@ abstract class Pagination
     }
 
     /**
+     * The first "page" of results
+     *
      * @return array
      */
-    public function get() : array
+    public function getFirst() : array
     {
         return $this->query($this->offset);
     }
+
+
 
     /**
      * @param int $offset

@@ -36,17 +36,17 @@ class Facebook extends Controller
             // find or create session
             $session = $this->facebookBusinessModelSessionFindOrCreate()->findOrCreate($request);
 
-            // start the engine
-            $engine = new \Botomatic\Engine\Facebook\Core\Engine($session, $request->getMessage());
-
-            // process the message
-            $engine->process();
-
             // log request?
             if (env('BOTOMATIC_FACEBOOK_LOG_REQUESTS', false) == true)
             {
                 \Botomatic\Engine\Core\Debug\Logger::requestFromFacebook($session->getUser(), $this->request->toArray());
             }
+
+            // start the engine
+            $engine = new \Botomatic\Engine\Facebook\Core\Engine($session, $request->getMessage());
+
+            // process the message
+            $engine->process();
 
             // respond
             return $engine->getResponse();

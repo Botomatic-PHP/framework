@@ -228,16 +228,6 @@ class CliBot extends BotomaticCommands
      */
     protected function resolve_bot_response(array $responses)
     {
-        /**
-         * If we don't have any responses
-         */
-        if (count($responses) == 0)
-        {
-            $this->comment('no response from the bot');
-            $this->ask('');
-        }
-        else
-        {
 
             $response_postbacks = [];
 
@@ -335,8 +325,17 @@ class CliBot extends BotomaticCommands
                             $this->info('-----------------------');
 
                             $this->info($element->title);
-                            $this->info($element->subtitle);
-                            $this->info($element->image_url);
+
+                            if (isset($element->subtitle))
+                            {
+                                $this->info($element->subtitle);
+                            }
+                            
+                            if (isset($element->image_url))
+                            {
+                                $this->info($element->image_url);
+                            }
+                            
 
                             foreach ($element->buttons as $button)
                             {
@@ -366,7 +365,6 @@ class CliBot extends BotomaticCommands
              * Check for postbacks
              *
              ---------------------------------------------------------------------------------------------------------*/
-
             if ($input[0] == '[' AND substr($input, -1) == ']')
             {
                 $postback = str_replace(['[', ']'], '', $input);
@@ -380,6 +378,6 @@ class CliBot extends BotomaticCommands
             }
 
             return $this->resolve_bot_response($this->sendMessage($input));
-        }
+
     }
 }
