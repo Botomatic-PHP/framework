@@ -98,7 +98,7 @@ class Request
             {
                 if (count($request_data['entry'][0]['messaging'][0]['message']['nlp']['entities']) > 0)
                 {
-                    $this->getMessage()->setNlp($request_data['entry'][0]['messaging'][0]['message']['nlp']);
+                    $this->getMessage()->nlp()->setEntities($request_data['entry'][0]['messaging'][0]['message']['nlp']['entities']);
                 }
             }
 

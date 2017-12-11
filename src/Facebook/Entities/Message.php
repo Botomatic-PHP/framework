@@ -1,6 +1,7 @@
 <?php
 
 namespace Botomatic\Engine\Facebook\Entities;
+use Botomatic\Engine\Facebook\Entities\Message\Nlp;
 
 /**
  * Class Message
@@ -77,9 +78,16 @@ class Message
     protected $attachment = null;
 
     /**
+     * @deprecated
+     *
      * @var array
      */
     protected $nlp = [];
+
+    /**
+     * @var Nlp
+     */
+    protected $nlp_entities;
 
     /**
      * @return string
@@ -98,6 +106,8 @@ class Message
     }
 
     /**
+     * @deprecated
+     *
      * @param array $nlp
      */
     public function setNlp(array $nlp)
@@ -106,6 +116,8 @@ class Message
     }
 
     /**
+     * @deprecated
+     *
      * @return array
      */
     public function getNlp() : array
@@ -114,11 +126,25 @@ class Message
     }
 
     /**
+     * @deprecated
+     *
      * @return bool
      */
     public function hasNlp() : bool
     {
         return count($this->nlp) > 0;
+    }
+
+    /**
+     * @return Nlp
+     */
+    public function nlp() : Nlp
+    {
+        if (is_null($this->nlp_entities))
+        {
+            $this->nlp_entities = new Nlp();
+        }
+        return $this->nlp_entities;
     }
 
     /**
