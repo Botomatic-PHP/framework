@@ -217,6 +217,51 @@ class Response
     }
 
     /**
+     * @param string $video
+     *
+     * @return $this
+     */
+    public function addVideo(string $video)
+    {
+        $this->responses[] = [
+            'data' => $video,
+            'type' => 'video'
+        ];
+
+        return $this;
+    }
+
+    /**
+     * @param string $audio
+     *
+     * @return $this
+     */
+    public function addAudio(string $audio)
+    {
+        $this->responses[] = [
+            'data' => $audio,
+            'type' => 'audio'
+        ];
+
+        return $this;
+    }
+
+    /**
+     * @param string $file
+     *
+     * @return $this
+     */
+    public function addFile(string $file)
+    {
+        $this->responses[] = [
+            'data' => $file,
+            'type' => 'file'
+        ];
+
+        return $this;
+    }
+
+    /**
      * @param string $title
      *
      * @return $this

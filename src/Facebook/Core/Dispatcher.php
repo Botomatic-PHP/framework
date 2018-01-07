@@ -220,6 +220,48 @@ class Dispatcher
                 ];
             }
 
+            if ($response_data['type'] == 'video')
+            {
+                $responses_entities[] = [
+                    'message' => [
+                        'attachment' => [
+                            'type' => 'video',
+                            'payload' => [
+                                'url' => $response_data['data']
+                            ]
+                        ]
+                    ]
+                ];
+            }
+
+            if ($response_data['type'] == 'audio')
+            {
+                $responses_entities[] = [
+                    'message' => [
+                        'attachment' => [
+                            'type' => 'audio',
+                            'payload' => [
+                                'url' => $response_data['data']
+                            ]
+                        ]
+                    ]
+                ];
+            }
+
+            if ($response_data['type'] == 'file')
+            {
+                $responses_entities[] = [
+                    'message' => [
+                        'attachment' => [
+                            'type' => 'file',
+                            'payload' => [
+                                'url' => $response_data['data']
+                            ]
+                        ]
+                    ]
+                ];
+            }
+
             if ($response_data['type'] == 'text')
             {
                 /**

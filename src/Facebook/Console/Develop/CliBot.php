@@ -379,6 +379,12 @@ class CliBot extends BotomaticCommands
                         $this->sendPostback($response_postbacks[$postback])
                     );
                 }
+                else
+                {
+                    return $this->resolve_bot_response(
+                        $this->sendPostback($postback)
+                    );
+                }
             }
 
             return $this->resolve_bot_response($this->sendMessage($input));
